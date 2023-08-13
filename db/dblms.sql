@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 24, 2019 at 06:41 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th8 13, 2023 lúc 04:41 PM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,61 +18,90 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dblms`
+-- Cơ sở dữ liệu: `dblms`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Cấu trúc bảng cho bảng `category`
 --
 
 CREATE TABLE `category` (
   `id` int(11) UNSIGNED NOT NULL,
-  `code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `parent` int(11) DEFAULT '0',
-  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `parent` int(11) DEFAULT 0,
+  `slug` varchar(255) DEFAULT NULL,
   `date_added` int(11) DEFAULT NULL,
   `last_modified` int(11) DEFAULT NULL,
-  `font_awesome_class` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `thumbnail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `font_awesome_class` varchar(255) DEFAULT NULL,
+  `thumbnail` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `category`
+--
+
+INSERT INTO `category` (`id`, `code`, `name`, `parent`, `slug`, `date_added`, `last_modified`, `font_awesome_class`, `thumbnail`) VALUES
+(1, 'dce6164d8d', 'HTML', 0, 'html', 1691877600, 1691877600, 'fab fa-tumblr', '3e8beca644b0748cbf0d24c36dbee56b.jpg'),
+(2, 'f6cced5cd8', 'HTML Tutorials', 1, 'html-tutorials', 1691877600, 1691877600, 'fab fa-accusoft', '51c169c93b066042d05bb4b7698f3dc2.jpg'),
+(3, '3e4d90bf06', 'HTML Advanced', 1, 'html-advanced', 1691877600, 1691877600, NULL, NULL),
+(4, 'bdbcbcd1a7', 'HTML Basic Examples', 1, 'html-basic-examples', 1691877600, NULL, NULL, NULL),
+(5, '8b2025d840', 'Python', 0, 'python', 1691877600, 1691877600, 'fas fa-address-book', 'a4e656ddda954bc817583f239bbb527c.jpg'),
+(6, 'ffb38b7c65', 'Python Tutorial', 5, 'python-tutorial', 1691877600, 1691877600, NULL, NULL),
+(7, '19ba283301', 'Python Advanced', 5, 'python-advanced', 1691877600, 1691877600, NULL, NULL),
+(8, '0260938f13', 'Python Example', 5, 'python-example', 1691877600, 1691877600, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ci_sessions`
+-- Cấu trúc bảng cho bảng `ci_sessions`
 --
 
 CREATE TABLE `ci_sessions` (
-  `id` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `ip_address` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` varchar(40) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `ci_sessions`
+-- Đang đổ dữ liệu cho bảng `ci_sessions`
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('u7jn4j62nnbfstbc61ei1vcs7arisqdn', '::1', 1561169011, 0x5f5f63695f6c6173745f726567656e65726174657c693a313536313136383934313b636172745f6974656d737c613a303a7b7d757365725f69647c733a313a2231223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a31313a2261646d696e2061646d696e223b61646d696e5f6c6f67696e7c733a313a2231223b),
 ('dpb2fi40qktdgagl2fgvv3nhce4dfun4', '::1', 1561300719, 0x5f5f63695f6c6173745f726567656e65726174657c693a313536313330303731393b636172745f6974656d737c613a303a7b7d),
-('2k91kfslkj6l19jl9rnc2ivrnb8pna7r', '::1', 1561351070, 0x5f5f63695f6c6173745f726567656e65726174657c693a313536313335313032363b636172745f6974656d737c613a303a7b7d757365725f69647c733a313a2231223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a31313a2261646d696e2061646d696e223b61646d696e5f6c6f67696e7c733a313a2231223b);
+('2k91kfslkj6l19jl9rnc2ivrnb8pna7r', '::1', 1561351070, 0x5f5f63695f6c6173745f726567656e65726174657c693a313536313335313032363b636172745f6974656d737c613a303a7b7d757365725f69647c733a313a2231223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a31313a2261646d696e2061646d696e223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('6n2l10ki0c09feghejr6am63ov3ejalm', '::1', 1691924299, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313932343239393b636172745f6974656d737c613a303a7b7d666c6173685f6d6573736167657c733a32333a2244617461204164646564205375636365737366756c6c79223b5f5f63695f766172737c613a313a7b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d757365725f69647c733a313a2232223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a31333a224875e1bbb36e68204e67c3a26e223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('e5n5su658p1ltqghd1j3u490qqeplsft', '::1', 1691924603, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313932343630333b636172745f6974656d737c613a303a7b7d666c6173685f6d6573736167657c733a32313a22436f75727365205374617475732055706461746564223b5f5f63695f766172737c613a313a7b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d757365725f69647c733a313a2232223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a31333a224875e1bbb36e68204e67c3a26e223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('6dp4rfq2mb5kh8vf0iv99h3bnu4r09ss', '::1', 1691924973, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313932343937333b636172745f6974656d737c613a303a7b7d666c6173685f6d6573736167657c733a34343a22596f757220526567697374726174696f6e20486173204265656e205375636365737366756c6c7920446f6e65223b5f5f63695f766172737c613a313a7b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d),
+('8dmre71jg1ls5lo4o29u4jmims0827g3', '::1', 1691925308, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313932353330383b636172745f6974656d737c613a303a7b7d666c6173685f6d6573736167657c733a31383a2257656c636f6d204875e1bbb36e68204e616e223b5f5f63695f766172737c613a323a7b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b7d6c61796f75747c733a343a226c697374223b6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b),
+('1rkdnmfle99n4i14dsmucbvqur0lumr7', '::1', 1691925616, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313932353631363b636172745f6974656d737c613a303a7b7d666c6173685f6d6573736167657c733a31333a224d6573736167652053656e7421223b5f5f63695f766172737c613a323a7b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b7d6c61796f75747c733a343a226c697374223b6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b757365725f69647c733a313a2234223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a31333a224875e1bbb36e68204e67c3a26e223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('at241pppveoumojkk36q2jbbolbj1ghc', '::1', 1691926296, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313932363239363b636172745f6974656d737c613a303a7b7d666c6173685f6d6573736167657c733a31333a224d6573736167652053656e7421223b5f5f63695f766172737c613a323a7b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b7d6c61796f75747c733a343a226c697374223b6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b757365725f69647c733a313a2233223b726f6c655f69647c733a313a2232223b726f6c657c733a343a2255736572223b6e616d657c733a31313a224875e1bbb36e68204e616e223b757365725f6c6f67696e7c733a313a2231223b),
+('bnrt8gld7s5584q3kv8igvul6pla1g3e', '::1', 1691926318, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313932363239363b636172745f6974656d737c613a303a7b7d666c6173685f6d6573736167657c733a31333a224d6573736167652053656e7421223b5f5f63695f766172737c613a323a7b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b7d6c61796f75747c733a343a226c697374223b6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b757365725f69647c733a313a2233223b726f6c655f69647c733a313a2232223b726f6c657c733a343a2255736572223b6e616d657c733a31313a224875e1bbb36e68204e616e223b757365725f6c6f67696e7c733a313a2231223b),
+('pjqqkb0ks9ga80nftqrcqk5efj3lfru0', '::1', 1691935499, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313933353439393b636172745f6974656d737c613a303a7b7d),
+('6g0m5a4gcj55blf4jkuq2il7iksv6a55', '::1', 1691935818, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313933353831383b636172745f6974656d737c613a303a7b7d6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b5f5f63695f766172737c613a323a7b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d666c6173685f6d6573736167657c733a32353a22446174612055706461746564205375636365737366756c6c79223b757365725f69647c733a313a2235223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a373a2261646d696e2031223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('fb9uih3a3qrihns9nhql3cq65so592ku', '::1', 1691936267, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313933363236373b636172745f6974656d737c613a303a7b7d6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b5f5f63695f766172737c613a323a7b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d666c6173685f6d6573736167657c733a32333a2244617461204164646564205375636365737366756c6c79223b757365725f69647c733a313a2235223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a373a2261646d696e2031223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('48d667h85t8cin13ksk3ettnsk5pgfjm', '::1', 1691936570, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313933363537303b636172745f6974656d737c613a303a7b7d6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b5f5f63695f766172737c613a323a7b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d666c6173685f6d6573736167657c733a32353a22446174612055706461746564205375636365737366756c6c79223b757365725f69647c733a313a2235223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a373a2261646d696e2031223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('ikg5vpfn1jlr8unujeafrm0u35vdvjmn', '::1', 1691936872, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313933363837323b636172745f6974656d737c613a303a7b7d6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b5f5f63695f766172737c613a323a7b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d666c6173685f6d6573736167657c733a33353a2253656374696f6e20486173204265656e204164646564205375636365737366756c6c79223b757365725f69647c733a313a2235223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a373a2261646d696e2031223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('uf2ab01spgc73dd68p8d6r19mqs2crr8', '::1', 1691937174, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313933373137343b636172745f6974656d737c613a323a7b693a303b733a313a2233223b693a313b733a313a2232223b7d6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b5f5f63695f766172737c613a323a7b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d666c6173685f6d6573736167657c733a31343a2257656c636f6d2061646d696e2031223b6c61796f75747c733a343a226c697374223b757365725f69647c733a313a2235223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a373a2261646d696e2031223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('qbblu2qmd7m0u4c1kpl0pfajhr23gmjs', '::1', 1691937475, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313933373437353b636172745f6974656d737c613a323a7b693a303b733a313a2233223b693a313b733a313a2232223b7d6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b5f5f63695f766172737c613a323a7b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d666c6173685f6d6573736167657c733a31333a224d6573736167652053656e7421223b6c61796f75747c733a343a226c697374223b757365725f69647c733a313a2235223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a373a2261646d696e2031223b61646d696e5f6c6f67696e7c733a313a2231223b),
+('hjqlplur7akbqflgo5kr56olilh04v8c', '::1', 1691937493, 0x5f5f63695f6c6173745f726567656e65726174657c693a313639313933373437353b636172745f6974656d737c613a323a7b693a303b733a313a2233223b693a313b733a313a2232223b7d6572726f725f6d6573736167657c733a32353a22496e76616c6964204c6f67696e2043726564656e7469616c73223b5f5f63695f766172737c613a323a7b733a31333a226572726f725f6d657373616765223b733a333a226f6c64223b733a31333a22666c6173685f6d657373616765223b733a333a226f6c64223b7d666c6173685f6d6573736167657c733a31333a224d6573736167652053656e7421223b6c61796f75747c733a343a226c697374223b757365725f69647c733a313a2235223b726f6c655f69647c733a313a2231223b726f6c657c733a353a2241646d696e223b6e616d657c733a373a2261646d696e2031223b61646d696e5f6c6f67696e7c733a313a2231223b);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Cấu trúc bảng cho bảng `comment`
 --
 
 CREATE TABLE `comment` (
   `id` int(11) UNSIGNED NOT NULL,
-  `body` longtext COLLATE utf8_unicode_ci,
+  `body` longtext DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `commentable_id` int(11) DEFAULT NULL,
-  `commentable_type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `commentable_type` varchar(50) DEFAULT NULL,
   `date_added` int(11) DEFAULT NULL,
   `last_modified` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -81,43 +109,52 @@ CREATE TABLE `comment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `course`
+-- Cấu trúc bảng cho bảng `course`
 --
 
 CREATE TABLE `course` (
   `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `short_description` longtext COLLATE utf8_unicode_ci,
-  `description` longtext COLLATE utf8_unicode_ci,
-  `outcomes` longtext COLLATE utf8_unicode_ci,
-  `language` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `short_description` longtext DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `outcomes` longtext DEFAULT NULL,
+  `language` varchar(255) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `sub_category_id` int(11) DEFAULT NULL,
-  `section` longtext COLLATE utf8_unicode_ci,
-  `requirements` longtext COLLATE utf8_unicode_ci,
+  `section` longtext DEFAULT NULL,
+  `requirements` longtext DEFAULT NULL,
   `price` double DEFAULT NULL,
-  `discount_flag` int(11) DEFAULT '0',
+  `discount_flag` int(11) DEFAULT 0,
   `discounted_price` int(11) DEFAULT NULL,
-  `level` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `level` varchar(50) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `thumbnail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `video_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `thumbnail` varchar(255) DEFAULT NULL,
+  `video_url` varchar(255) DEFAULT NULL,
   `date_added` int(11) DEFAULT NULL,
   `last_modified` int(11) DEFAULT NULL,
   `visibility` int(11) DEFAULT NULL,
-  `is_top_course` int(11) DEFAULT '0',
+  `is_top_course` int(11) DEFAULT 0,
   `is_admin` int(11) DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `course_overview_provider` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_keywords` longtext COLLATE utf8_unicode_ci,
-  `meta_description` longtext COLLATE utf8_unicode_ci,
+  `status` varchar(255) DEFAULT NULL,
+  `course_overview_provider` varchar(255) DEFAULT NULL,
+  `meta_keywords` longtext DEFAULT NULL,
+  `meta_description` longtext DEFAULT NULL,
   `is_free_course` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `course`
+--
+
+INSERT INTO `course` (`id`, `title`, `short_description`, `description`, `outcomes`, `language`, `category_id`, `sub_category_id`, `section`, `requirements`, `price`, `discount_flag`, `discounted_price`, `level`, `user_id`, `thumbnail`, `video_url`, `date_added`, `last_modified`, `visibility`, `is_top_course`, `is_admin`, `status`, `course_overview_provider`, `meta_keywords`, `meta_description`, `is_free_course`) VALUES
+(1, 'HTML Tutorial', '', '<p xss=removed>HTML is the standard markup language for Web pages.</p><p xss=removed>With HTML you can create your own Website.</p><p xss=removed>HTML is easy to learn - You will enjoy it!</p><div><br></div>', '[\"Bi\\u1ebft HTML c\\u01a1 b\\u1ea3n\"]', 'english', NULL, 2, '[1]', '[\"Kh\\u00f4ng c\\u00f3\"]', 0, NULL, 0, 'beginner', 2, NULL, 'https://www.youtube.com/watch?v=R6plN3FvzFY&list=PL_-VfJajZj0U9nEXa4qyfB4U5ZIYCMPlz', 1691877600, 1691877600, NULL, 1, 0, 'active', 'youtube', '', '', 1),
+(2, 'Python Tutorial', '', '<h2 xss=removed>What is Python?</h2><p xss=removed>Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.</p><p xss=removed>It is used for:</p><ul xss=removed><li xss=removed>web development (server-side),</li><li xss=removed>software development,</li><li xss=removed>mathematics,</li><li xss=removed>system scripting.</li></ul><h3 xss=removed>What can Python do?</h3><ul xss=removed><li xss=removed>Python can be used on a server to create web applications.</li><li xss=removed>Python can be used alongside software to create workflows.</li><li xss=removed>Python can connect to database systems. It can also read and modify files.</li><li xss=removed>Python can be used to handle big data and perform complex mathematics.</li><li xss=removed>Python can be used for rapid prototyping, or for production-ready software development.</li></ul><h3 xss=removed>Why Python?</h3><ul xss=removed><li xss=removed>Python works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc).</li><li xss=removed>Python has a simple syntax similar to the English language.</li><li xss=removed>Python has syntax that allows developers to write programs with fewer lines than some other programming languages.</li><li xss=removed>Python runs on an interpreter system, meaning that code can be executed as soon as it is written. This means that prototyping can be very quick.</li><li xss=removed>Python can be treated in a procedural way, an object-oriented way or a functional way.</li></ul><h3 xss=removed>Good to know</h3><ul xss=removed><li xss=removed>The most recent major version of Python is Python 3, which we shall be using in this tutorial. However, Python 2, although not being updated with anything other than security updates, is still quite popular.</li><li xss=removed>In this tutorial Python will be written in a text editor. It is possible to write Python in an Integrated Development Environment, such as Thonny, Pycharm, Netbeans or Eclipse which are particularly useful when managing larger collections of Python files.</li></ul><h3 xss=removed>Python Syntax compared to other programming languages</h3><ul xss=removed><li xss=removed>Python was designed for readability, and has some similarities to the English language with influence from mathematics.</li><li xss=removed>Python uses new lines to complete a command, as opposed to other programming languages which often use semicolons or parentheses.</li><li xss=removed>Python relies on indentation, using whitespace, to define scope; such as the scope of loops, functions and classes. Other programming languages often use curly-brackets for this purpose.</li></ul>', '[\"Bi\\u1ebft Python c\\u01a1 b\\u1ea3n\"]', 'english', NULL, 6, '[]', '[\"Kh\\u00f4ng c\\u00f3\"]', 1000, NULL, 800, 'beginner', 5, NULL, '', 1691877600, 1691877600, NULL, 1, 0, 'active', '', '', '', 1),
+(3, 'Python Modules', '', '', '[\"\\u00c1p d\\u1ee5ng \\u0111\\u01b0\\u1ee3c c\\u00e1c module Python\"]', 'english', NULL, 7, '[2,3,4,5]', '[\"\\u0110\\u00e3 qua Python Tutorial\"]', 1000, 1, 900, 'advanced', 5, NULL, '', 1691877600, 1691877600, NULL, 1, 0, 'active', '', '', '', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `currency`
+-- Cấu trúc bảng cho bảng `currency`
 --
 
 CREATE TABLE `currency` (
@@ -127,10 +164,10 @@ CREATE TABLE `currency` (
   `symbol` varchar(255) DEFAULT NULL,
   `paypal_supported` int(11) DEFAULT NULL,
   `stripe_supported` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `currency`
+-- Đang đổ dữ liệu cho bảng `currency`
 --
 
 INSERT INTO `currency` (`id`, `name`, `code`, `symbol`, `paypal_supported`, `stripe_supported`) VALUES
@@ -250,7 +287,7 @@ INSERT INTO `currency` (`id`, `name`, `code`, `symbol`, `paypal_supported`, `str
 -- --------------------------------------------------------
 
 --
--- Table structure for table `enrol`
+-- Cấu trúc bảng cho bảng `enrol`
 --
 
 CREATE TABLE `enrol` (
@@ -261,20 +298,29 @@ CREATE TABLE `enrol` (
   `last_modified` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `enrol`
+--
+
+INSERT INTO `enrol` (`id`, `user_id`, `course_id`, `date_added`, `last_modified`) VALUES
+(1, 3, 1, 1691877600, NULL),
+(2, 3, 2, 1691877600, NULL),
+(3, 6, 2, 1691877600, NULL);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `frontend_settings`
+-- Cấu trúc bảng cho bảng `frontend_settings`
 --
 
 CREATE TABLE `frontend_settings` (
   `id` int(11) UNSIGNED NOT NULL,
-  `key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `value` longtext COLLATE utf8_unicode_ci
+  `key` varchar(255) DEFAULT NULL,
+  `value` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `frontend_settings`
+-- Đang đổ dữ liệu cho bảng `frontend_settings`
 --
 
 INSERT INTO `frontend_settings` (`id`, `key`, `value`) VALUES
@@ -288,18 +334,18 @@ INSERT INTO `frontend_settings` (`id`, `key`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `language`
+-- Cấu trúc bảng cho bảng `language`
 --
 
 CREATE TABLE `language` (
   `phrase_id` int(11) NOT NULL,
-  `phrase` longtext COLLATE utf8_unicode_ci,
-  `english` longtext COLLATE utf8_unicode_ci,
-  `Bengali` longtext COLLATE utf8_unicode_ci
+  `phrase` longtext DEFAULT NULL,
+  `english` longtext DEFAULT NULL,
+  `Bengali` longtext DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `language`
+-- Đang đổ dữ liệu cho bảng `language`
 --
 
 INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `Bengali`) VALUES
@@ -899,95 +945,126 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `Bengali`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lesson`
+-- Cấu trúc bảng cho bảng `lesson`
 --
 
 CREATE TABLE `lesson` (
   `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `duration` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `duration` varchar(255) DEFAULT NULL,
   `course_id` int(11) DEFAULT NULL,
   `section_id` int(11) DEFAULT NULL,
-  `video_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `video_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `video_type` varchar(255) DEFAULT NULL,
+  `video_url` varchar(255) DEFAULT NULL,
   `date_added` int(11) DEFAULT NULL,
   `last_modified` int(11) DEFAULT NULL,
-  `lesson_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `attachment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `attachment_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `summary` longtext COLLATE utf8_unicode_ci,
-  `order` int(11) NOT NULL DEFAULT '0'
+  `lesson_type` varchar(255) DEFAULT NULL,
+  `attachment` varchar(255) DEFAULT NULL,
+  `attachment_type` varchar(255) DEFAULT NULL,
+  `summary` longtext DEFAULT NULL,
+  `order` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `lesson`
+--
+
+INSERT INTO `lesson` (`id`, `title`, `duration`, `course_id`, `section_id`, `video_type`, `video_url`, `date_added`, `last_modified`, `lesson_type`, `attachment`, `attachment_type`, `summary`, `order`) VALUES
+(1, '1+1=?', '00:00:00', 1, 1, NULL, NULL, 1691877600, NULL, 'quiz', NULL, NULL, '', 0),
+(2, 'Introduction', NULL, 1, 1, NULL, NULL, 1691877600, NULL, 'other', '9ba2c00468663a46cd89b73f566126dd.xlsx', 'doc', '', 0),
+(3, 'Ảnh minh họa', NULL, 3, 2, NULL, NULL, 1691877600, NULL, 'other', '65922d2e6493b3ec5392f71a47d6b59d.png', 'img', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- Cấu trúc bảng cho bảng `message`
 --
 
 CREATE TABLE `message` (
   `message_id` int(11) NOT NULL,
-  `message_thread_code` longtext,
-  `message` longtext,
-  `sender` longtext,
-  `timestamp` longtext,
+  `message_thread_code` longtext DEFAULT NULL,
+  `message` longtext DEFAULT NULL,
+  `sender` longtext DEFAULT NULL,
+  `timestamp` longtext DEFAULT NULL,
   `read_status` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `message`
+--
+
+INSERT INTO `message` (`message_id`, `message_thread_code`, `message`, `sender`, `timestamp`, `read_status`) VALUES
+(1, 'bc9834f24417bf3', '4984984984', '4', '1691925573', NULL),
+(2, 'bc9834f24417bf3', '5+9+58+99+', '4', '1691925582', NULL),
+(3, 'bc9834f24417bf3', '59849849', '3', '1691925665', NULL),
+(4, '9ad0602dfe0d180', '1234', '5', '1691935767', NULL),
+(5, '9ad0602dfe0d180', '5678', '5', '1691935771', NULL),
+(6, 'c0bb204c6aa0301', 'hello', '6', '1691937329', 1),
+(7, 'c0bb204c6aa0301', '5+9+58+99+', '5', '1691937472', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message_thread`
+-- Cấu trúc bảng cho bảng `message_thread`
 --
 
 CREATE TABLE `message_thread` (
   `message_thread_id` int(11) NOT NULL,
-  `message_thread_code` longtext COLLATE utf8_unicode_ci,
-  `sender` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `receiver` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `last_message_timestamp` longtext COLLATE utf8_unicode_ci
+  `message_thread_code` longtext DEFAULT NULL,
+  `sender` varchar(255) DEFAULT '',
+  `receiver` varchar(255) DEFAULT '',
+  `last_message_timestamp` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `message_thread`
+--
+
+INSERT INTO `message_thread` (`message_thread_id`, `message_thread_code`, `sender`, `receiver`, `last_message_timestamp`) VALUES
+(1, 'bc9834f24417bf3', '4', '3', NULL),
+(2, '9ad0602dfe0d180', '5', '3', NULL),
+(3, 'c0bb204c6aa0301', '6', '5', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment`
+-- Cấu trúc bảng cho bảng `payment`
 --
 
 CREATE TABLE `payment` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `payment_type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `payment_type` varchar(50) DEFAULT NULL,
   `course_id` int(11) DEFAULT NULL,
   `amount` double DEFAULT NULL,
   `date_added` int(11) DEFAULT NULL,
   `last_modified` int(11) DEFAULT NULL,
-  `admin_revenue` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `instructor_revenue` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `instructor_payment_status` int(11) DEFAULT '0'
+  `admin_revenue` varchar(255) DEFAULT NULL,
+  `instructor_revenue` varchar(255) DEFAULT NULL,
+  `instructor_payment_status` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `question`
+-- Cấu trúc bảng cho bảng `question`
 --
 
 CREATE TABLE `question` (
   `id` int(11) UNSIGNED NOT NULL,
   `quiz_id` int(11) DEFAULT NULL,
-  `title` longtext COLLATE utf8_unicode_ci,
-  `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` longtext DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
   `number_of_options` int(11) DEFAULT NULL,
-  `options` longtext COLLATE utf8_unicode_ci,
-  `correct_answers` longtext COLLATE utf8_unicode_ci,
-  `order` int(11) NOT NULL DEFAULT '0'
+  `options` longtext DEFAULT NULL,
+  `correct_answers` longtext DEFAULT NULL,
+  `order` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating`
+-- Cấu trúc bảng cho bảng `rating`
 --
 
 CREATE TABLE `rating` (
@@ -995,27 +1072,35 @@ CREATE TABLE `rating` (
   `rating` double DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `ratable_id` int(11) DEFAULT NULL,
-  `ratable_type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ratable_type` varchar(50) DEFAULT NULL,
   `date_added` int(11) DEFAULT NULL,
   `last_modified` int(11) DEFAULT NULL,
-  `review` longtext COLLATE utf8_unicode_ci
+  `review` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `rating`
+--
+
+INSERT INTO `rating` (`id`, `rating`, `user_id`, `ratable_id`, `ratable_type`, `date_added`, `last_modified`, `review`) VALUES
+(1, 5, 3, 1, 'course', 1691877600, NULL, ''),
+(2, 5, 6, 0, 'course', 1691877600, NULL, 'fine');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Cấu trúc bảng cho bảng `role`
 --
 
 CREATE TABLE `role` (
   `id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `date_added` int(11) DEFAULT NULL,
   `last_modified` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `role`
+-- Đang đổ dữ liệu cho bảng `role`
 --
 
 INSERT INTO `role` (`id`, `name`, `date_added`, `last_modified`) VALUES
@@ -1025,30 +1110,41 @@ INSERT INTO `role` (`id`, `name`, `date_added`, `last_modified`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `section`
+-- Cấu trúc bảng cho bảng `section`
 --
 
 CREATE TABLE `section` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `course_id` int(11) DEFAULT NULL,
-  `order` int(11) NOT NULL DEFAULT '0'
+  `order` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `section`
+--
+
+INSERT INTO `section` (`id`, `title`, `course_id`, `order`) VALUES
+(1, 'Introduction', 1, 0),
+(2, 'NumPy', 3, 0),
+(3, 'Pandas', 3, 0),
+(4, 'Django', 3, 0),
+(5, 'SciPy', 3, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings`
+-- Cấu trúc bảng cho bảng `settings`
 --
 
 CREATE TABLE `settings` (
   `id` int(11) UNSIGNED NOT NULL,
-  `key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `value` longtext COLLATE utf8_unicode_ci
+  `key` varchar(255) DEFAULT NULL,
+  `value` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `settings`
+-- Đang đổ dữ liệu cho bảng `settings`
 --
 
 INSERT INTO `settings` (`id`, `key`, `value`) VALUES
@@ -1087,14 +1183,14 @@ INSERT INTO `settings` (`id`, `key`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tag`
+-- Cấu trúc bảng cho bảng `tag`
 --
 
 CREATE TABLE `tag` (
   `id` int(11) UNSIGNED NOT NULL,
-  `tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tag` varchar(255) DEFAULT NULL,
   `tagable_id` int(11) DEFAULT NULL,
-  `tagable_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tagable_type` varchar(255) DEFAULT NULL,
   `date_added` int(11) DEFAULT NULL,
   `last_modified` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1102,259 +1198,262 @@ CREATE TABLE `tag` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
-  `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `social_links` longtext COLLATE utf8_unicode_ci,
-  `biography` longtext COLLATE utf8_unicode_ci,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `social_links` longtext DEFAULT NULL,
+  `biography` longtext DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL,
   `date_added` int(11) DEFAULT NULL,
   `last_modified` int(11) DEFAULT NULL,
-  `watch_history` longtext COLLATE utf8_unicode_ci,
-  `wishlist` longtext COLLATE utf8_unicode_ci,
-  `title` longtext COLLATE utf8_unicode_ci,
-  `paypal_keys` longtext COLLATE utf8_unicode_ci,
-  `stripe_keys` longtext COLLATE utf8_unicode_ci,
-  `verification_code` longtext COLLATE utf8_unicode_ci,
+  `watch_history` longtext DEFAULT NULL,
+  `wishlist` longtext DEFAULT NULL,
+  `title` longtext DEFAULT NULL,
+  `paypal_keys` longtext DEFAULT NULL,
+  `stripe_keys` longtext DEFAULT NULL,
+  `verification_code` longtext DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `social_links`, `biography`, `role_id`, `date_added`, `last_modified`, `watch_history`, `wishlist`, `title`, `paypal_keys`, `stripe_keys`, `verification_code`, `status`) VALUES
-(1, 'admin', 'admin', 'admin@example.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '{\"facebook\":\"\",\"twitter\":\"\",\"linkedin\":\"\"}', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+(1, 'admin', 'admin', 'admin@example.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '{\"facebook\":\"\",\"twitter\":\"\",\"linkedin\":\"\"}', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(3, 'Huỳnh', 'Nan', 'huynhdieuno@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', '{\"facebook\":\"\",\"twitter\":\"\",\"linkedin\":\"\"}', '', 2, 1691924862, 1691925616, '[]', '[]', NULL, '[{\"production_client_id\":\"\"}]', '[{\"public_live_key\":\"\",\"secret_live_key\":\"\"}]', 'a3c34e71491d25936cfc77c863db715f', 1),
+(5, 'admin', '1', '1234@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '{\"facebook\":\"https:\\/\\/www.w3schools.com\\/python\\/python_intro.asp\",\"twitter\":\"https:\\/\\/www.w3schools.com\\/python\\/python_intro.asp\",\"linkedin\":\"https:\\/\\/www.w3schools.com\\/python\\/python_intro.asp\"}', 'https://www.w3schools.com/python/python_intro.asp', 1, 1691935692, 1691936465, '[]', '[]', 'https://www.w3schools.com/python/python_intro.asp', '[{\"production_client_id\":null}]', '[{\"public_live_key\":null,\"secret_live_key\":null}]', '0b54a3e51244a27bf18da548540fc4f0', 1),
+(6, 'abc', '1', 'abc@gmail.com', 'a9993e364706816aba3e25717850c26c9cd0d89d', '{\"facebook\":\"\",\"twitter\":\"\",\"linkedin\":\"\"}', NULL, 2, 1691937071, NULL, '[]', '[]', NULL, '[{\"production_client_id\":\"\"}]', '[{\"public_live_key\":\"\",\"secret_live_key\":\"\"}]', 'c37a1a3b0ed66e65bf1ecf377d0df512', 1);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `category`
+-- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `comment`
+-- Chỉ mục cho bảng `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `course`
+-- Chỉ mục cho bảng `course`
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `currency`
+-- Chỉ mục cho bảng `currency`
 --
 ALTER TABLE `currency`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `enrol`
+-- Chỉ mục cho bảng `enrol`
 --
 ALTER TABLE `enrol`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `frontend_settings`
+-- Chỉ mục cho bảng `frontend_settings`
 --
 ALTER TABLE `frontend_settings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `language`
+-- Chỉ mục cho bảng `language`
 --
 ALTER TABLE `language`
   ADD PRIMARY KEY (`phrase_id`);
 
 --
--- Indexes for table `lesson`
+-- Chỉ mục cho bảng `lesson`
 --
 ALTER TABLE `lesson`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `message`
+-- Chỉ mục cho bảng `message`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`message_id`);
 
 --
--- Indexes for table `message_thread`
+-- Chỉ mục cho bảng `message_thread`
 --
 ALTER TABLE `message_thread`
   ADD PRIMARY KEY (`message_thread_id`);
 
 --
--- Indexes for table `payment`
+-- Chỉ mục cho bảng `payment`
 --
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `question`
+-- Chỉ mục cho bảng `question`
 --
 ALTER TABLE `question`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `rating`
+-- Chỉ mục cho bảng `rating`
 --
 ALTER TABLE `rating`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role`
+-- Chỉ mục cho bảng `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `section`
+-- Chỉ mục cho bảng `section`
 --
 ALTER TABLE `section`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `settings`
+-- Chỉ mục cho bảng `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tag`
+-- Chỉ mục cho bảng `tag`
 --
 ALTER TABLE `tag`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `comment`
+-- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `course`
+-- AUTO_INCREMENT cho bảng `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `currency`
+-- AUTO_INCREMENT cho bảng `currency`
 --
 ALTER TABLE `currency`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
--- AUTO_INCREMENT for table `enrol`
+-- AUTO_INCREMENT cho bảng `enrol`
 --
 ALTER TABLE `enrol`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `frontend_settings`
+-- AUTO_INCREMENT cho bảng `frontend_settings`
 --
 ALTER TABLE `frontend_settings`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `language`
+-- AUTO_INCREMENT cho bảng `language`
 --
 ALTER TABLE `language`
   MODIFY `phrase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=594;
 
 --
--- AUTO_INCREMENT for table `lesson`
+-- AUTO_INCREMENT cho bảng `lesson`
 --
 ALTER TABLE `lesson`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `message`
+-- AUTO_INCREMENT cho bảng `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `message_thread`
+-- AUTO_INCREMENT cho bảng `message_thread`
 --
 ALTER TABLE `message_thread`
-  MODIFY `message_thread_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `message_thread_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `payment`
+-- AUTO_INCREMENT cho bảng `payment`
 --
 ALTER TABLE `payment`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `question`
+-- AUTO_INCREMENT cho bảng `question`
 --
 ALTER TABLE `question`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `rating`
+-- AUTO_INCREMENT cho bảng `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT cho bảng `role`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `section`
+-- AUTO_INCREMENT cho bảng `section`
 --
 ALTER TABLE `section`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `settings`
+-- AUTO_INCREMENT cho bảng `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `tag`
+-- AUTO_INCREMENT cho bảng `tag`
 --
 ALTER TABLE `tag`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
